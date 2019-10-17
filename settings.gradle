@@ -18,3 +18,14 @@ if (properties.getOrDefault('wp.BUILD_GUTENBERG_FROM_SOURCE', false).toBoolean()
     include ':react-native-video'
     project(':react-native-video').projectDir = new File(rootProject.projectDir, 'libs/gutenberg-mobile/node_modules/react-native-video/android-exoplayer')
 }
+
+buildCache {
+    local {
+        enabled = false
+    }
+    remote(HttpBuildCache) {
+        url = "http://ec6b32db.ngrok.io/cache/"
+        enabled = true
+        push = true
+    }
+}
